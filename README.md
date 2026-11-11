@@ -1,5 +1,7 @@
 # athanor-number-theory
 
+**Archived release v1.0:** Zenodo [10.5281/zenodo.24139689](https://doi.org/10.5281/zenodo.24139689) (all versions: [10.5281/zenodo.24139688](https://doi.org/10.5281/zenodo.24139688)).
+
 Certified computations on long-stalled number-theory questions (November 2026). See also [fourcover-search](https://github.com/iwasborninbali/fourcover-search): generators for two Mordell curves left open in the Best–Matschke data.
 
 | Folder | Question (source) | Result | Status |
