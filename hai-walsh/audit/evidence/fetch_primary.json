@@ -1,0 +1,70 @@
+[
+  {
+    "url": "https://www.impan.pl/shop/publication/transaction/download/product/83626",
+    "final_url": "https://www.impan.pl/shop/publication/transaction/download/product/83626",
+    "path": "sources/haiwalsh2010.pdf",
+    "bytes": 156523,
+    "sha256": "53c0899bbe3d85f561f09ec0480d942e9cc7b039711027fd4a64a6ce0bff445c",
+    "content_type": "application/pdf; charset=binary"
+  },
+  {
+    "url": "https://westcoastnumbertheory.org/wp-content/uploads/2018/12/wcnt-problems-2017.pdf",
+    "final_url": "https://westcoastnumbertheory.org/wp-content/uploads/2018/12/wcnt-problems-2017.pdf",
+    "path": "sources/wnt2017.pdf",
+    "bytes": 333860,
+    "sha256": "2a743d6de1fddd1692b06185d5173298da4e8322f4fad08f28f9b8ae824a894c",
+    "content_type": "application/pdf"
+  },
+  {
+    "url": "https://nntdm.net/papers/nntdm-30/NNTDM-30-4-825-831.pdf",
+    "final_url": "https://nntdm.net/papers/nntdm-30/NNTDM-30-4-825-831.pdf",
+    "path": "sources/li2024.pdf",
+    "bytes": 227677,
+    "sha256": "10cfbbe60c3b1b23d04df59422d5d42e8aa19cfdae656342f93d7293f0d0fe23",
+    "content_type": "application/pdf"
+  },
+  {
+    "url": "https://www.cs.umd.edu/~gasarch/open/garyw.pdf",
+    "final_url": "https://www.cs.umd.edu/~gasarch/open/garyw.pdf",
+    "path": "sources/walsh_survey.pdf",
+    "bytes": 262074,
+    "sha256": "29d30e91f12ecc52113f37504d433704070d7e1f4497cd61e0b3f9acdf9dcbf6",
+    "content_type": "application/pdf"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2603.05809",
+    "final_url": "https://arxiv.org/pdf/2603.05809",
+    "path": "sources/walsh2026.pdf",
+    "bytes": 291746,
+    "sha256": "55c8f65145cd68ec73778e087c227f59dadf7870c69cdd5b54e20b1c2e9eb2de",
+    "content_type": "application/pdf"
+  },
+  {
+    "url": "https://sites.google.com/view/gary-walsh/research-articles",
+    "final_url": "https://sites.google.com/view/gary-walsh/research-articles",
+    "path": "sources/walsh_bibliography.html",
+    "bytes": 202337,
+    "sha256": "994083b7ae9538d6f6c8e84c9ef94deb50fe18b4e2d31547831d0999427f9d09",
+    "content_type": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://publi.math.unideb.hu/paper/2444/abstract/10_5486_PMD_2021_8928_abstract.pdf",
+    "final_url": "https://publi.math.unideb.hu/paper/2444/abstract/10_5486_PMD_2021_8928_abstract.pdf",
+    "path": "sources/lin_walsh_yuan_abstract.pdf",
+    "bytes": 122656,
+    "sha256": "1b546bc2b6f3e71dc2d420c7f1cdfb8f70aee1678b432a2b12423b4717fa14ec",
+    "content_type": "application/pdf"
+  },
+  {
+    "url": "https://www.worldscientific.com/doi/pdf/10.1142/S1793042124500106",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://publi.math.unideb.hu/paper/2444/download/10_5486_PMD_2021_8928.pdf",
+    "final_url": "https://publi.math.unideb.hu/error/no_subscription/2021",
+    "path": "sources/lin_walsh_yuan_full_response.html",
+    "bytes": 4654,
+    "sha256": "2e98ab517e9959e8397d7a165275886177ee5c96fc0a248a55a9beddef255e9e",
+    "content_type": "text/html; charset=UTF-8"
+  }
+]

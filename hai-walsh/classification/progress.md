@@ -1,0 +1,9 @@
+# Progress
+
+- 2026-11-11 00:29 UTC: Started. Literature clearance first (maximum 20 minutes), followed by certification pilots for y=4 and small y. Local free space: 15 GiB. All research output stays in this folder; VM work will use nice 19, CPU 1 only.
+
+- 2026-11-11 00:45 UTC: Literature pass found no located resolution (full-text gap for Walsh 2024 remains). Pilot y=4: ranks 3/1, 29/3 integral points, recovered (33,4,3), (2177,4,23), no plus solution. PARI all-200 rank/field pass: 8.27 s, 194 exact rank bounds, six gaps. Main Sage pass: 79.58 s, 179 full integral-point lists; 21 plus curves incomplete. Eighteen of those quartics are excluded directly modulo 8 or 3, yielding 97 complete y fibres and all 100 minus fibres. Only plus y=73,91,97 remains open. Independent exact-fraction finite enumeration passed: 240,881 MW coefficient combinations, 14 witnesses, 19.10 s. Extra local PARI effort 20 did not resolve the three remaining fibres. Bounded eclib second-descent search for y=91 still running on VM CPU 1 / nice 19. Folder <5 MiB; free disk 15 GiB.
+
+- 2026-11-11 00:48 UTC: Independent exact search completed all 240,881 MW combinations and all inverse-map filters. The extra y=91 C++ descent did not return a basis and was externally terminated after the Python SIGALRM failed to interrupt its native call. This is recorded as an interrupted search, not a rank/basis certificate. Preparing immutable hashes and final report; no VM search will remain running.
+
+- 2026-11-11 00:51 UTC: Final independent check PASS (63 hashed files, 240,881 exact MW combinations, 14 solution witnesses, 18 full congruence exclusions, three explicit open plus fibres; 14.597 s). Audited the parity-only lower-rank issue: y=91 is recorded with witnessed bounds [0,1], despite PARI reporting [1,1]. Confirmed and certified the paper's p.130 typo (4t^3-2t -> 4t^3-3t). result.md and hashes complete. VM search stopped; no background research work remains.

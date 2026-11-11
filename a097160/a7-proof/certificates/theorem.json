@@ -1,0 +1,28 @@
+{
+  "format": "quadratic-residue-cutoff-v1",
+  "analytic_lemma": "N_k(p) >= (p - B_k sqrt(p) - C_k)/2^k; p prime > k",
+  "cases": [
+    {
+      "index": 6,
+      "candidate": 2153,
+      "run_length": 7,
+      "M": 330,
+      "upper": 108900,
+      "B": 321,
+      "C": 448,
+      "endpoint": "a6-endpoint.json",
+      "witnesses": "a6-witnesses.txt.gz"
+    },
+    {
+      "index": 7,
+      "candidate": 4481,
+      "run_length": 8,
+      "M": 775,
+      "upper": 600625,
+      "B": 769,
+      "C": 1024,
+      "endpoint": "a7-endpoint.json",
+      "witnesses": "a7-witnesses.txt.gz"
+    }
+  ]
+}

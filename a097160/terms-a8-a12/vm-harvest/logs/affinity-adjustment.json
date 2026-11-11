@@ -1,0 +1,14 @@
+{
+  "utc": "2026-11-11T02:33:38Z",
+  "pid": 1143339,
+  "threads": 1,
+  "nice": 10,
+  "affinity_before": [
+    2
+  ],
+  "affinity_after": [
+    2,
+    3
+  ],
+  "reason": "one scanner thread may migrate between the two permitted cores as other VM jobs move"
+}

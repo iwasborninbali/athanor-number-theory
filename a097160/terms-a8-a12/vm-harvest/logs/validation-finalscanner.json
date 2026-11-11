@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "exact_small_cases": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "prime_interval": "[2,1000)",
+  "independently_enumerated_primes": 168,
+  "rejected_faults": [
+    "omitted_p2",
+    "false_maximum_p2",
+    "composite_inserted",
+    "duplicate_tail",
+    "omitted_endpoint"
+  ]
+}

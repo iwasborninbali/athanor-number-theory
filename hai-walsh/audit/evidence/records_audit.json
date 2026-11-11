@@ -1,0 +1,36 @@
+{
+  "raw_certificate_consistency_count": 179,
+  "exact_lattice_counterwitness_count": 144,
+  "y4_witnesses": [
+    {
+      "y": 4,
+      "sign": -1,
+      "short_vector": [
+        -77167,
+        231552,
+        -72310,
+        0
+      ],
+      "row_combination": [
+        -77167,
+        231552,
+        -72310,
+        -46690
+      ],
+      "norm2": "64799810693"
+    },
+    {
+      "y": 4,
+      "sign": 1,
+      "short_vector": [
+        -9514346325173898,
+        0
+      ],
+      "row_combination": [
+        -9514346325173898,
+        8130017030147243
+      ],
+      "norm2": "90522785995350057219479940514404"
+    }
+  ]
+}

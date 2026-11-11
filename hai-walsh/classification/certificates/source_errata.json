@@ -1,0 +1,13 @@
+{
+  "source": "Yang Hai and P. G. Walsh, Acta Arith. 145 (2010), p.130, Corollary 1.1",
+  "source_pdf": "sources/haiwalsh2010.pdf",
+  "page_image": "sources/primary_p130.png",
+  "printed_first_coordinate": "4t^3 - 2t",
+  "correct_first_coordinate": "4t^3 - 3t",
+  "test_parameter": 2,
+  "printed_triple": [28, 2, 4],
+  "corrected_triple": [26, 2, 4],
+  "denominator": "y^2 - 1",
+  "corrected_sign": -1,
+  "note": "This concerns the solved minus-denominator analogue, not the open target. Visually checked against the primary PDF page."
+}

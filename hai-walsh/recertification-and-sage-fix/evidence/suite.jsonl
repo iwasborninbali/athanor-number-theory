@@ -1,0 +1,10 @@
+{"event": "start", "job": "guards", "source_sha256": "11c12549b704c732b945121a90ded0dc727568c501d7f0a611a0c91e4dc7df1a", "utc": "2026-11-11T01:49:30.349523+00:00", "affinity": [1], "nice": 19}
+{"event": "finish", "job": "guards", "exit_code": 0, "seconds": 7.869943520054221}
+{"event": "start", "job": "doctests-final", "source_sha256": "11c12549b704c732b945121a90ded0dc727568c501d7f0a611a0c91e4dc7df1a", "utc": "2026-11-11T01:49:38.220248+00:00", "affinity": [1], "nice": 19}
+{"event": "finish", "job": "doctests-final", "exit_code": 0, "seconds": 360.55096766888164}
+{"event": "start", "job": "crosscheck", "source_sha256": "11c12549b704c732b945121a90ded0dc727568c501d7f0a611a0c91e4dc7df1a", "utc": "2026-11-11T01:55:38.771763+00:00", "affinity": [1], "nice": 19}
+{"event": "finish", "job": "crosscheck", "exit_code": 0, "seconds": 56.41737092286348}
+{"event": "start", "job": "patched-all", "source_sha256": "11c12549b704c732b945121a90ded0dc727568c501d7f0a611a0c91e4dc7df1a", "utc": "2026-11-11T01:56:35.189656+00:00", "affinity": [1], "nice": 19}
+{"event": "finish", "job": "patched-all", "exit_code": 0, "seconds": 115.94313455792144}
+{"event": "start", "job": "lattice-certificates", "source_sha256": "11c12549b704c732b945121a90ded0dc727568c501d7f0a611a0c91e4dc7df1a", "utc": "2026-11-11T01:58:31.133457+00:00", "affinity": [1], "nice": 19}
+{"event": "finish", "job": "lattice-certificates", "exit_code": 0, "seconds": 0.7261137100867927}

@@ -1,0 +1,1 @@
+{"method":"Euler criterion with multiplicative sequential scan and odd bit sieve","mode":"sample","k":11,"upper_exclusive":84989961,"prime_count":4943183,"checked_count":1242,"exception_count":784,"sample_count":458,"sample_seed_hex":"a09716020261111","sample_modulus":10000,"endpoint":60961,"Euler_evaluations":855739,"wall_seconds":0.571151,"cpu_seconds":0.550140,"status":"PASS"}

@@ -1,0 +1,120 @@
+--- a/src/sage/schemes/elliptic_curves/ell_rational_field.py
++++ b/src/sage/schemes/elliptic_curves/ell_rational_field.py
+@@ -5846,7 +5846,7 @@
+             [-3, -2, -1, 0, 1]
+             x-coords of points on non-compact component with  2 <=x<= 6
+             [2, 3, 4]
+-            starting search of remaining points using coefficient bound 5 and |x| bound 1.53897183921...e25
++            starting search of remaining points using coefficient bound ... and |x| bound ...
+             x-coords of extra integral points:
+             [2, 3, 4, 8, 11, 14, 21, 37, 52, 93, 342, 406, 816]
+             Total number of integral points: 18
+@@ -5903,6 +5903,16 @@
+ 
+             sage: for n in [67,71,74,91]:  # long time
+             ....:     assert 4*n^6 + 4*n^2 in [P[0] for P in EllipticCurve([0,0,0,2,n^2]).integral_points()]
++
++        The reduction must establish its lattice inequality before using
++        a lower bound (see :issue:`27015`)::
++
++            sage: E = EllipticCurve([1,-1,1,-11,16])
++            sage: 20829482 in [P[0] for P in E.integral_points([E(2,-2)])]
++            True
++            sage: E = EllipticCurve([1,0,1,-118,584])
++            sage: 507525709 in [P[0] for P in E.integral_points([E(13,29)])]
++            True
+ 
+         ALGORITHM:
+ 
+@@ -6084,40 +6094,61 @@
+             else:
+                 top = bound - 1
+ 
+-        H_q = R(10)**bound
++        H_q = Z(10)**bottom
+         break_cond = 0 #at least one reduction step
+         #reduction via LLL
++        from sage.rings.complex_arb import ComplexBallField
++        from sage.rings.qqbar import QQbar
++        lattice_roots = pol.roots(QQbar, multiplicities=False)
++        real_root = max(z for z in lattice_roots if z.imag() == 0)
++        torsion_exponent = self.torsion_subgroup().exponent()
+         M = MatrixSpace(Z,n)
+         while break_cond < 0.9: #as long as the improvement of the new bound in comparison to the old is greater than 10%
+-            c = R((H_q**n)*10)  #c has to be greater than H_q^n
+-            m = copy(M.identity_matrix())
+-            for i in range(r):
+-                m[i, r] = R(c*mw_base_log[i]).round()
+-            m[r,r] = max(Z(1),R(c*w1).round()) #ensures that m isn't singular
+-
+-            #LLL - implemented in sage - operates on rows not on columns
+-            m_LLL = m.LLL()
+-            m_gram = m_LLL.gram_schmidt()[0]
+-            b1_norm = R(m_LLL.row(0).norm())
+-
+-            #compute constant c1 ~ c1_LLL of Corollary 2.3.17 and hence d(L,0)^2 ~ d_L_0
+-            c1_LLL = -R.one()
+-            for i in range(n):
+-                tmp = R(b1_norm/(m_gram.row(i).norm()))
+-                c1_LLL = max(tmp, c1_LLL)
+-
+-            if c1_LLL < 0:
+-                raise RuntimeError('Unexpected intermediate result. Please try another Mordell-Weil base')
+-
+-            d_L_0 = R(b1_norm**2 / c1_LLL)
+-
+-            #Reducing of upper bound
+-            Q = r * H_q**2
+-            T = (1 + (Z(3)/2*r*H_q))/2
+-            if d_L_0 < R(T**2+Q):
+-                d_L_0 = 10*(T**2*Q)
+-            low_bound = (R(d_L_0 - Q).sqrt() - T) / c
+-
++            # A failed lattice inequality cannot be repaired by replacing
++            # its lower bound. Recompute at a larger scale and precision.
++            c = 10 * Z(H_q)**n
++            Q = r * Z(H_q)**2
++            for attempt in range(16):
++                lattice_prec = max(128, c.nbits() + 64*(attempt+1))
++                C_lattice = ComplexBallField(lattice_prec)
++                R_lattice = C_lattice(0).real().parent()
++                root = C_lattice(real_root)
++                other = [C_lattice(z) for z in lattice_roots if z != real_root]
++                period = (2*C_lattice(0).elliptic_rf(root-other[0],
++                                                    root-other[1])).real()
++                # Carlson's integral encloses the absolute centered real log.
++                # Preprocessing put the basis on the identity component.
++                logs = []
++                for P in mw_base:
++                    x = C_lattice(P[0] + b2/12)
++                    u = (x-root).elliptic_rf(x-other[0], x-other[1]).real()
++                    logs.append(torsion_exponent*u/period)
++                rounded = [Z((c*u).mid().round()) for u in logs]
++                errors = [abs(c*u-a).upper().exact_rational()
++                          for u, a in zip(logs, rounded)]
++                T = Z(H_q)*sum(errors)
++                m = copy(M.identity_matrix())
++                for i in range(r):
++                    m[i, r] = rounded[i]
++                # Normalizing by the real period makes this column exact.
++                # Multiplying logs by the torsion exponent clears its offset.
++                m[r, r] = c
++
++                # LLL operates on rows. Every nonzero vector has squared
++                # length at least the minimum squared Gram-Schmidt length.
++                # Keep this calculation and the positivity test exact.
++                m_gram = m.LLL().gram_schmidt()[0]
++                d_L_0 = min(v.dot_product(v) for v in m_gram.rows())
++                if d_L_0 > T**2 + Q:
++                    low = ((R_lattice(d_L_0 - Q).sqrt() - T)
++                           * period / (torsion_exponent*c))
++                    if low > 0:
++                        low_bound = low.lower().exact_rational()
++                        break
++                c *= 10
++            else:
++                raise RuntimeError("unable to establish the integral-point "
++                                   "lattice reduction inequality")
+             #new bound according to low_bound and upper bound
+             #[c_5 exp((-c_2*H_q^2)/2)] provided by Corollary 8.7.3
+             if low_bound != 0:

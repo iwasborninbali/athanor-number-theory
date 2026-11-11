@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "n": 8,
+      "endpoint": 9857,
+      "k": 9,
+      "B": 1793,
+      "C": 2304,
+      "M": 1795,
+      "cutoff": 3222025,
+      "margin": 1286,
+      "prime_count": 231706,
+      "exceptions": 217,
+      "independent_mode": "full",
+      "independent_checked": 231706,
+      "independent_random_sample": 22,
+      "square_audited": true,
+      "certificate_sha256": "8c69872fbec68d00f71833d1c2e5a29f87c5196c48205129da4b4e7cefb3abed"
+    },
+    {
+      "n": 9,
+      "endpoint": 25793,
+      "k": 10,
+      "B": 4097,
+      "C": 5120,
+      "M": 4099,
+      "cutoff": 16801801,
+      "margin": 3078,
+      "prime_count": 1079376,
+      "exceptions": 400,
+      "independent_mode": "full",
+      "independent_checked": 1079376,
+      "independent_random_sample": 91,
+      "square_audited": true,
+      "certificate_sha256": "db351e22cd17f7314a849f95d0045cef51377ce9744dd0bd50671cbfd6699bb1"
+    }
+  ],
+  "seconds": 0.5680228150449693
+}

@@ -1,0 +1,498 @@
+          QUADRATIC RESIDUE PATTERNS MODULO A PRIME
+
+                                        KEITH CONRAD
+
+
+
+
+                                      1. Introduction
+   Let p be an odd prime. Among the nonzero numbers in Fp , half are squares and half are
+nonsquares. The former are called quadratic residues and the latter are called quadratic
+nonresidues. We do not consider 0 to be a quadratic residue or nonresidue, even though it
+is of course a square.
+   If a is a quadratic residue in F×
+                                   p , is a + 1 more or less likely to be a quadratic residue? If
+                                  ×
+a is a quadratic nonresidue in Fp , is a + 1 more or less likely to be a quadratic nonresidue?
+Let’s look at some data.
+Example 1.1. Taking p = 19, the 9 quadratic residues are 1, 4, 5, 6, 7, 9, 11, 16, 17, and
+the 9 quadratic nonresidues are 2, 3, 8, 10, 12, 13, 14, 15, 18. In the table below we indicate
+when a and a + 1 are quadratic residues (QR) for a ∈ F×      19 .
+        a           1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+    a is QR?       X            X X X X             X        X                     X X
+  a + 1 is QR?             X X X X              X       X                      X X
+   There are 17 pairs (a, a + 1) where a and a + 1 are nonzero in F19 (all a aside from
+0 and 18). The table above tells us that 4 pairs have a and a + 1 as quadratic residues
+(a = 4, 5, 6, 16), 5 pairs have a as a quadratic residue and a + 1 as a quadratic nonresidue
+(a = 1, 7, 9, 11, 17), 4 pairs have a as a quadratic nonresidue and a + 1 as a quadratic residue
+(a = 3, 8, 10, 15), and 4 pairs have a and a + 1 as quadratic nonresidues (a = 2, 12, 13, 14,
+noting 18 doesn’t count since 18 + 1 = 0). The four options for a and a + 1 to be quadratic
+residues or nonresidues are approximately equally likely (around 25% each).
+Example 1.2. When p = 101, there are 99 pairs (a, a + 1) where a and a + 1 are nonzero in
+F101 (all a 6= 0, 100). Among these pairs, a and a + 1 are quadratic residues 24 times, a is a
+quadratic residue and a + 1 is a quadratic nonresidue 25 times, a is a quadratic nonresidue
+and a + 1 is a quadratic residue 25 times, and a and a + 1 are quadratic nonresidues 25
+times. These counts are equal or nearly equal.
+   There are 98 triples (a, a+1, a+2) where a, a+1, and a+2 are nonzero in F×  101 : all a aside
+from 0, 99, and 100. Using + to denote a quadratic residue and − to denote a quadratic
+nonresidue, the following table says the frequency of the quadratic residue patterns among
+the triples (a, a + 1, a + 2) in F×
+                                  101 is nearly uniform.
+                 (a, a + 1, a + 2) (+, +, +) (+, +, −) (+, −, +) (−, +, +)
+                      Count             12         12       12          12
+                 (a, a + 1, a + 2) (+, −, −) (−, +, −) (−, −, +) (−, −, −)
+                      Count             13         12       13          12
+Example 1.3. The tables below count how many pairs (a, a + 1) and triples (a, a + 1, a + 2)
+in F×
+    1009 have different quadratic residue patterns. The counts look nearly uniform in each
+case.
+                                                1
+2                                              KEITH CONRAD
+
+                             (a, a + 1) (+, +) (+, −) (−, +) (−, −)
+                               Count     251    252    252    252
+
+                  (a, a + 1, a + 2) (+, +, +) (+, +, −) (+, −, +) (−, +, +)
+                       Count          128       122       122       122
+                  (a, a + 1, a + 2) (+, −, −) (−, +, −) (−, −, +) (−, −, −)
+                       Count          130       130       130       122
+   These examples suggest that the quadratic residue patterns of a fixed length in F×     p are
+approximately equally likely. Among the sets of r consecutive numbers in F×     p , allowing for
+ r
+2 choices of their quadratic residue patterns, we will show the frequency of each quadratic
+residue pattern is nearly p/2r , which is what we’d expect if we were discussing r independent
+random variables on Fp that each have two outcomes.
+
+                                         2. The main theorem
+   For r ≥ 1 and an odd prime p > r, we want to count how many r-tuples of consecutive
+numbers a, a + 1, . . . , a + r − 1 in F×   p have predetermined quadratic residue behavior. (We
+need p > r so that F×       p contains  at least r elements.) We will use the Legendre symbol. For
+a choice of r signs ε1 , . . . , εr ∈ {±1}, set
+                                                                                           
+                                      ×      a            a+1                        a+r−1
+      Np (ε1 , . . . , εr ) = a ∈ Fp :           = ε1 ,           = ε2 , . . . ,             = εr
+                                             p              p                            p
+                                                                                    
+                                             a+i−1
+                            = a ∈ F×  p  :                = ε i for i = 1,  . .  . , r   .
+                                                 p
+In the tables in Examples 1.2 and 1.3, the + corresponds to Legendre symbol 1 and the −
+corresponds to Legendre symbol −1. For instance, Example 1.2 tells us that N101 (1, 1, 1) =
+12 and N101 (1, −1, −1) = 13. Here is the main result.
+Theorem 2.1. For r signs ε1 , . . . , εr ∈ {±1} and an odd prime p > r, Np (ε1 , . . . , εr ) =
+           √
+p/2r + Or ( p). More precisely,
+                                                  p               √    r
+                          Np (ε1 , . . . , εr ) − r < (r − 1) p + .
+                                                  2                    2
+Proof. We will write down a formula for Np (ε1 , . . . , εr ) in terms of a sum of Legendre symbol
+products, extract the main term p/2r , and bound what is left.
+  We begin with a counting formula. For b ∈ F×        p and ε = ±1,
+                                                  (
+                                                    2, if ( pb ) = ε,
+                                        
+                                           b
+                              1+ε               =
+                                           p        0, if ( pb ) 6= ε,
+so
+                                             (
+                                                                  if ( pb ) = ε,
+                                      
+                                  1         b    1,
+(2.1)                                  1+ε     =
+                                  2         p    0,               if ( pb ) 6= ε.
+Therefore if b1 , . . . , br ∈ F×                         ×
+                                 p and ε1 , . . . , εr ∈ Fp ,
+               r                   (
+                                                 1, if ( bpi ) = εi for all i ∈ {1, . . . , r},
+                       
+             Y      1              bi
+                          1 + εi        =
+             i=1
+                    2              p             0, if ( bpi ) 6= εi for some i ∈ {1, . . . , r},
+                          QUADRATIC RESIDUE PATTERNS MODULO A PRIME                                              3
+
+
+so
+                                                                                     
+                                             ×     a+i−1
+                Np (ε1 , . . . , εr ) = a ∈ Fp :              = εi for i = 1, . . . , r
+                                                      p
+                                                    r                      
+                                           X        Y   1           a+i−1
+                                      =                    1 + εi                    .
+                                                        2               p
+                                           a∈Fp         i=1
+                                     a,a+1,...,a+r−16=0
+
+                                                     where a + j− 1 = 0 in Fp for some
+What can we say aboutmissing terms in the outer sum,
+j ∈ {1, . . . , r}? Then 21 1 + εj ( a+j−1
+                                       p   ) = 12 while 12 1 + εi ( a+i−1
+                                                                      p ) is 0 or 1 for i 6= j, so
+                                    r                 
+                                    Y 1           a+i−1     1
+                                         1 + εi            ≤ .
+                                      2             p       2
+                                    i=1
+
+There are r such terms (corresponding to a = 0, a = −1, . . . , a = −(r − 1) in Fp ), so
+                                       r                  
+                                  XY      1           a+i−1      er
+         Np (ε1 , . . . , εr ) =             1 + εi            + , where |er | ≤ r,
+                                          2             p        2
+                                 a∈Fp i=1
+                                          r                
+                                  1 XY                 a+i−1      er
+                               = r            1 + εi            + .
+                                 2                       p        2
+                                    a∈Fp i=1
+
+Let’s expand the product inside the sum: for each a ∈ Fp ,
+              r                                                  !
+             Y             a+i−1                X      Y a + i − 1
+                  1 + εi               =1+                 εi
+                              p                               p
+                 i=1                                       S⊂{1,...,r}          i∈S
+                                                             S6=∅
+                                                                                           !            
+                                                               X                Y               fS (a)
+                                                   =1+                                εi                     ,
+                                                                                                  p
+                                                           S⊂{1,...,r}          i∈S
+                                                             S6=∅
+                Q
+where fS (x) = i∈S (x + i − 1). The polynomial fS (x) ∈ Fp [x] is separable with degree
+|S|. Feeding the above expression for the product into the formula for Np (ε1 , . . . , εr ) and
+swapping the order of summation,
+                                                                    
+                                                           !       
+                                     1 X    X       Y        fS (a) 
+                                                                      + er
+             Np (ε1 , . . . , εr ) = r  1 +            εi
+                                    2                          p         2
+                                          a∈Fp         S⊂{1,...,r}        i∈S
+                                                         S6=∅
+                                                                          !
+                                   p  1             X          Y              X  fS (a)                er
+                                 = r+ r                              εi                             +       .
+                                  2  2                                                      p            2
+                                                 S⊂{1,...,r}   i∈S            a∈Fp
+                                                   S6=∅
+
+We have found the desired term p/2r in the formula for Np (ε1 , . . . , εr ) and want to show
+the rest of the formula is small.1
+   1This technique of relating N (ε , . . . , ε ) to p/2r goes back at least to Jacobsthal in 1906 when r = 2 [6,
+                                p 1            r
+p. 27]. For a more recent account of it, see replies to the MathOverflow post “Consecutive non-quadratic
+residues” at https://mathoverflow.net/questions/161271/consecutive-non-quadratic-residues.
+4                                           KEITH CONRAD
+
+                  Q
+    The product       i∈S εi is ±1, so by the triangle inequality
+
+                                              p   1      X        X  fS (a)     r
+(2.2)                 Np (ε1 , . . . , εr ) − r ≤ r                              + .
+                                             2   2                       p        2
+                                                      S⊂{1,...,r} a∈Fp
+                                                        S6=∅
+
+The inner sum over Fp on the right side can be estimated with Weil’s bound, which says
+in a special case that for nonconstant f (x) ∈ Fp [x] having no repeated roots (that is, are
+separable),
+                               X  f (a)                  √
+(2.3)                                        ≤ (deg f − 1) p.
+                                      p
+                                   a∈Fp
+
+(This inequality is an equality if deg f = 1, and generally is a strict inequality if deg f ≥ 2.)
+Applying (2.3) to the polynomials fS (x), which each have no repeated roots, we get
+                X  fS (a)                    √               √             √
+                                ≤ (deg fS − 1) p = (|S| − 1) p ≤ (r − 1) p.
+                         p
+                  a∈Fp
+
+This upper bound is independent of S, so feeding it into (2.2) gives us
+                                           p   1 X             √      r
+                   Np (ε1 , . . . , εr ) − r ≤ r       ((r − 1) p) +
+                                          2   2                       2
+                                                        S⊂{1,...,r}
+                                                          S6=∅
+                                                     1 r              √    r
+                                                =     r
+                                                        (2 − 1)(r − 1) p +
+                                                    2                      2
+                                                           √      r
+                                                 < (r − 1) p + .                             
+                                                                  2
+                                                                √
+   For each r, the count Np (ε1 , . . . , εr ) = p/2r + Or ( p) tends to ∞ as p → ∞, so in
+particular Np (ε1 , . . . , εr ) ≥ 1 for all large p. We can determine the largest prime modulo
+which there are not r consecutive quadratic residues mod p by setting Np (1, 1, . . . , 1) = 0
+in Theorem 2.1 to get an upper bound on the possible p.
+Example 2.2. We will show for all odd primes p that Np (1, −1) ≥ 1. By Theorem 2.1,
+                                                  p     √
+                                     Np (1, −1) −    < p + 1.
+                                                  4
+                                          √                                                √
+If Np (1, −1) = 0 then we have p < 4( p + 1). The only positive solution to t = 4( t + 1)
+                               √
+is around 23.313, so p < 4( p + 1) for p ≤ 23 and not for p ≥ 29. Thus Np (1, −1) ≥ 1
+when p ≥ 29. For the primes p = 3, 5, . . . , 23 we can do a direct search: for p ≤ 19, the
+sign pattern ( ap ) = 1 and ( a+1
+                               p ) = −1 holds for a = 1 or a = 2, and for p = 23 we get that
+pattern for a = 4.
+   For similar reasons, Np (ε1 , ε2 ) ≥ 1 when p ≥ 7 no matter what the signs ε1 and ε2 are:
+it holds for p ≥ 29 as above and a direct search for p = 7, 11, . . . , 23 shows each consecutive
+quadratic residue pattern (1, 1), (−1, 1), and (−1, −1) occurs at least once. These three
+patterns don’t occur for p = 3 and (1, 1) also doesn’t occur for p = 5.
+   That Np (1, 1) ≥ 1 for p ≥ 7 can be proved using an argument by contradiction instead
+of a formula for Np (1, 1). We’ll show (1, 2), (4, 5), or (9, 10) is a pair of consecutive squares
+mod p. Since ( p1 ) = 1 and ( p4 ) = 1, if 2 and 5 are not squares mod p then ( p2 ) = −1 and
+                         QUADRATIC RESIDUE PATTERNS MODULO A PRIME                                         5
+
+
+( p5 ) = −1 since p > 5. Therefore ( p9 ) = 1 and ( 10         2 5
+                                                       p ) = ( p )( p ) = (−1)(−1) = 1. This kind of
+reasoning can’t be used to prove Np (1, −1), Np (−1, 1), or Np (−1, −1) is positive for p ≥ 7
+since each initial interval of integers {1, 2, . . . , n} is entirely quadratic residues mod p for
+some prime p. For example, ( ap ) = 1 for a ≤ 20 when p is the prime number 193993801.
+Example 2.3. What is the largest prime p for which there are not 3 consecutive quadratic
+residues mod p? This is asking for the largest p such that Np (1, 1, 1) = 0. The bound
+                                  √                    √
+in Theorem 2.1 implies p/8 < 2 p + 3/2, so p < 16 p + 12. That implies p < 279.4,
+so p ≤ 277. Checking all primes up to 277, the last one without 3 consecutive quadratic
+residues is p = 17.
+   That there are three consecutive quadratic residues modulo p for p ≥ 19 is due to Jacob-
+sthal [6, p. 30].
+  The proof of Theorem 2.1 can be used to count quadratic residue patterns with gaps that
+are not necessarily consecutive: if p > r and c1 , . . . , cr are distinct in Fp , the set
+                                                                           
+                                       a + ci
+                          a ∈ F×p  :            = ε i   for  i = 1, . . . , r
+                                         p
+for each choice of signs ε1 , . . . , εr ∈ {±1} has a size Np , say, that satisfies the same estimate
+as in Theorem 2.1:
+                                                p             √       r
+                                        Np − r < (r − 1) p + .
+                                                2                     2
+The
+Q    only  change  needed
+                       Q   in    the   proof   of  Theorem   2.1  is to replace the polynomial fS (x) =
+  i∈S (x + i − 1) with    i∈S  (x    +  ci ).
+   The Weil bound (2.3) extends to all finite fields, not just those of odd prime order p,
+with the Legendre symbol on Fp replaced by a nontrivial multiplicative character on Fq
+     √                                            √
+and p in the Weil bound replaced by q. In particular, for an odd prime power q, if χ is
+the quadratic character on F×     q then for distinct c1 , . . . , cr in Fq and signs ε1 , . . . , εr ∈ {±1},
+the number
+                      Nq := a ∈ F×
+                                 
+                                            q : χ(a + ci ) = εi for i = 1, . . . , r
+satisfies2
+                                             q           √   r
+                                      Nq −      < (r − 1) q + .
+                                             2r              2
+                                           3. Some history
+   The first work on counting quadratic residue patterns of two or more consecutive terms
+in F×p was by Aladov [1] in 1896. He counted each quadratic residue pattern of length
+2, and some (but not all) quadratic residue patterns of length 3. The counts of length 2
+were computed explicitly as in the table below, depending on p mod 4. The formulas are
+consistent with the determination of when Np (ε1 , ε2 ) > 0 in Example 2.3.
+                  p mod 4 Np (1, 1) Np (1, −1) Np (−1, 1) Np (−1, −1)
+                      1      (p − 5)/4 (p − 1)/4 (p − 1)/4       (p − 1)/4
+                      3      (p − 3)/4 (p + 1)/4 (p − 3)/4       (p − 3)/4
+   We can write these formulas for Np (ε1 , ε2 ) as p/4 + O(1). In 1898, von Sterneck [8]
+counted patterns of length 3 and 4 with restrictions (each pattern was counted along with
+its opposite, e.g., (+, +, −) and (−, −, +) together, not separately). In 1906, Jacobsthal
+[6, Chap. III] in his dissertation found exact formulas for the number of quadratic residue
+   2We need q > r in order to have r nonzero numbers a + c in F at all.
+                                                          i    q
+6                                               KEITH CONRAD
+
+                                                                                                  √
+patterns of length 2 and 3 in F×       p . The length 3 counts imply Np (ε1 , ε2 , ε3 ) = p/8 + O( p)
+in all cases (and it is p/8 + O(1) for p ≡ 3 mod 4).
+   Davenport considered this counting problem for r ≥ 4 throughout the 1930s. In [2] he
+showed |Np (ε1 , . . . , εr ) − p/2r | = Or (p3/4 ) for r = 4 and 5 by ad hoc methods that did not
+extend easily to r ≥ 6. In [3] he used other tricks for 6 ≤ r ≤ 9 that led to bounds Or (p7/8 )
+for r = 6 and 7, and Or (p19/20 ) for r = 8 and 9, and he could reduce the bound when r = 4
+from Or (p3/4 ) to Or (p2/3 ). Reducing the exponent on p in the O-bound is closely related
+to bounding the real parts of the zeros of the zeta-function of curves y 2 = f (x) over Fp .
+Davenport continued to refine his techniques throughout the 1930s, and in [4, Theorem 5]
+he got a bound of the form Or (p1−θr ) for general r with an explicit formula for θr that tends
+                                                √
+to 0 as r → ∞. A definitive bound Or ( p) for all r, coming from the bound in (2.3), was
+given by Weil [9] (see also [5, Theorem 3.1]) as a consequence of his proof of the Riemann
+hypothesis for curves over finite fields.
+   An account of Davenport’s work and its influence on Hasse and Mordell is in [7, Sect. 3].
+
+
+         Appendix A. Extending Theorem 2.1 beyond the Legendre symbol
+  The Weil bound (2.3) for the Legendre symbol on Fp has a generalization to other
+multiplicative characters on finite fields: if χ is a nontrivial multiplicative character on
+Fq with order n ≥ 2 and f (x) ∈ Fq [x] is monic and not an n-th power, then
+
+                                         X                        √
+(A.1)                                           χ(f (a)) ≤ (r − 1) q.
+                                         a∈Fq
+
+where f (x) has r distinct roots (the roots need not be simple) in a splitting field over Fq .
+This is [5, Theorem 3.1]3.
+  Using (A.1) we will prove the following generalization of Theorem 2.1.
+Theorem A.1. Let χ1 , . . . , χr be nontrivial multiplicative characters on Fq , where χi has
+order ni ≥ 2. For r < q, pick distinct c1 , . . . , cr in Fq and an ni -th root of unity εi in C for
+i = 1, . . . , r. Set
+                          Nq = |{a ∈ Fq : χi (a + ci ) = εi for i = 1, . . . , r}| .
+Then
+                                                q                √   r
+                                     Nq −               < (r − 1) q + .
+                                            n1 . . . nr              2
+   When q = p and all χi are quadratic (ni = 2 for all i), Theorem A.1 becomes Theorem
+2.1.
+   We take r < q in Theorem A.1 because if r ≥ q then for each a ∈ Fq the numbers
+a + c1 , . . . , a + cr fill up Fq so one of these is 0, and thus Nq = 0, which is uninteresting.
+
+    3In [5] it is assumed for (A.1) that f (x) is not an n-th power but it is not explicitly stated that f (x) is
+                                                                                         n              ×
+not monic too. ForP non-monic f we    Pget counterexamples to (A.1): if f (x) = cg(x) with    P c ∈ Fq not an
+n-th power, then a∈Fq χ(f (a)) = a∈Fq χ(cg(a)n ) = χ(c)(q − {a ∈ Fq : g(a) 6= 0}), so | a∈Fq χ(f (a))| =
+q − |{a ∈ Fq : g(a) 6= 0}| ≥ q − r, which contradicts (A.1) if r is small, such as r = 1 (f (x) = cxn ) for any q
+or r = 2 (f (x) = cxn (x − 1)n ) for q > 4.
+                            QUADRATIC RESIDUE PATTERNS MODULO A PRIME                                                                  7
+
+
+Proof. For b ∈ F×                                                  ×
+                  q , a nontrivial multiplicative character χ on Fq of order n, and an n-th
+root of unity ε in C, the finite geometric series of n terms with ratio χ(b)/ε equals
+                                                            (
+                              χ(b) 2            χ(b) n−1
+                                                 
+                    χ(b)                                      n, if χ(b) = ε,
+               1+        +           + ... +              =
+                      ε        ε                  ε           0, if χ(b) 6= ε,
+so
+                                                   2                          n−1 !      (
+              1          χ(b)              χ(b)                           χ(b)                1,     if χ(b) = ε,
+                      1+      +                             + ... +                        =
+              n           ε                 ε                              ε                  0,     if χ(b) 6= ε,
+which generalizes (2.1). Therefore
+                         r                                                           2                               ni −1 !
+               X         Y 1             χi (a + ci )                  χi (a + ci )                      χi (a + ci )
+     Nq =                             1+              +                                    + ··· +                                 .
+                               ni             εi                            εi                                εi
+               a∈Fq      i=1
+            all a+cj 6=0
+
+   This sum over Fq is missing terms at those a for which a + cj = 0 for some j. For such
+an a, the product over 1 ≤ i ≤ r associated to it in the above formula would be 0 or 1/nj ,
+so we can write Nq as a sum over all of Fq by including an additional error term:
+                r
+                                                                                           !
+                                            χi (a + ci ) 2             χi (a + ci ) ni −1
+                                                                                 
+        XY          1    χi (a + ci )
+ Nq =                 1+               +                    + ··· +                          +e
+                   ni         εi                 εi                         εi
+       a∈Fq i=1
+                       r
+                                                                                                  !
+                                                    χi (a + ci ) 2             χi (a + ci ) ni −1
+                                                                                        
+            1       XY           χi (a + ci )
+     =                    1+                  +                    + ··· +                          + e,
+        n1 · · · nr                   εi                 εi                         εi
+                      a∈Fq i=1
+
+where |e| ≤ 1/n1 + · · · + 1/nr ≤ r/2 (since ni ≥ 2). Multiplying out all the sums,
+                    1        X     X      χ1 (a + c1 )t1 · · · χr (a + cr )tr
+          Nq =                                                                +e
+                n1 · · · nr
+                            a∈F 0≤t ≤n −1
+                                                    εt11 · · · εtrr
+                                        q       i       i
+                                             for all i
+                          1            X            1         X
+                  =                            t1         tr     χ1 (a + c1 )t1 · · · χr (a + cr )tr + e.
+                      n1 · · · nr            ε    · · · ε r
+                                    0≤t ≤n −1 1
+                                       i    i                a∈F           q
+                                      for all i
+                                                     P
+The inner term when all ti are 0 is                          a∈Fq 1 = q, so
+
+
+                      q             1                        X         X                                            r
+         Nq −                 ≤                                                χ1 (a + c1 )t1 · · · χr (a + cr )tr + .
+                  n1 · · · nr   n1 · · · nr                                                                         2
+                                                     0≤ti ≤ni −1 a∈Fq
+                                                      some ti 6=0
+
+We will use (A.1) to show each inner sum over Fq on the right side has magnitude at most
+       √
+(r − 1) q, which would give us what we want:
+                            q             1       X          √      r
+                  Nq −              ≤                ((r − 1) q) +
+                        n1 · · · nr   n1 · · · nr                   2
+                                                                      0≤ti ≤ni −1
+                                                                       some ti 6=0
+                                                          1                               √    r
+                                                    =             (n1 · · · nr − 1)(r − 1) q +
+                                                      n1 · · · nr                              2
+                                                                √      r
+                                                    < (r − 1) q + .
+                                                                       2
+8                                             KEITH CONRAD
+
+
+    It remains to show
+                           X                                                   √
+                                  χ1 (a + c1 )t1 · · · χr (a + cr )tr ≤ (r − 1) q
+                           a∈Fq
+
+when 0 ≤ ti ≤ ni − 1 with some ti not 0. Since F×       q is cyclic, its character group is cyclic:
+                                                      ×
+let χ be a generator of the character group of Fq and write χi = χmi for mi ∈ Z+ . Then
+           X                                         X
+               χ1 (a + c1 )t1 · · · χr (a + cr )tr =    χ(a + c1 )t1 m1 · · · χ(a + cr )tr mr
+            a∈Fq                                       a∈Fq
+                                                       X
+                                                   =          χ((a + c1 )t1 m1 · · · (a + cr )tr mr )
+                                                       a∈Fq
+                                                       X
+                                                   =          χ(f (a)),
+                                                       a∈Fq
+
+where f (x) = (x + c1 )t1 m1 · · · (x + cP
+                                         r)
+                                            tr mr . This polynomial is monic with r distinct roots.
+
+In order to apply (A.1) to bound | a∈Fq χ(f (a))|, all that remains to be checked is that
+f (x) is not a (q − 1)-th power in Fq [x] (since χ has order q − 1). That is equivalent, since
+f is monic, to the root multiplicities t1 m1 , . . . , tr mr not all being multiples of q − 1.
+   Having (q − 1) | ti mi is the same as having (q − 1)/(q − 1, mi ) | ti since (q − 1)/(q − 1, mi )
+and mi /(q − 1, mi ) are relatively prime. The order of χ is q − 1 and the order of χi is ni ,
+so from χi = χmi we get ni = (q − 1)/(q − 1, mi ). Therefore (q − 1) | ti mi is equivalent to
+ni | ti . Recalling that 0 ≤ ti ≤ ni − 1. we can have ni | ti only if ti = 0. Since some ti is
+not 0 this completes the proof that f (x) is not an n-th power.                                  
+
+                                              References
+[1] N. S. Aladov, “Sur la distribution des résidus quadratiques et non-quadratiques d’un nombre premier P
+    dans la suite 1, 2, . . . , P − 1,” (Russian) Mat. Sb. 18 (1896), 61–75. URL http://mi.mathnet.ru/eng/
+    msb/v18/i1/p61.
+[2] H. Davenport, “On the Distribution of Quadratic Residues (mod p),” J. London Math. Society 6 (1931),
+    49–54.
+[3] H. Davenport, “On the Distribution of Quadratic Residues (mod p) (Second paper),” J. London Math.
+    Society 8 (1933), 46–52.
+[4] H. Davenport, “On Character Sums in Finite Fields,” Acta Math. 71 (1939), 99–121.
+[5] E. Kowalski, Exponential sums over finite fields, I: elementary methods. URL https://people.math.
+    ethz.ch/~kowalski/exp-sums.pdf.
+[6] E. Jacobsthal, Anwendungen einer Formel aus der Theorie der quadratischen Reste, Dissertation, Univ.
+    Berlin, 1906. URL https://gdz.sub.uni-goettingen.de/id/PPN317964577.
+[7] P. Roquette, “The Riemann hypothesis in characteristic p, its origin and development. Part 2. The first
+    steps by Davenport and Hasse.” Mitt. Math. Ges. Hamburg 22 (2004), 1–68. URL https://www.mathi.
+    uni-heidelberg.de/~roquette/rv2.pdf.
+[8] R. von Sterneck, “On the distribution of quadratic residues and nonresidues of a prime number,” (Rus-
+    sian) Mat. Sb. 20 (1898), 269–284. URL http://mi.mathnet.ru/eng/msb/v20/i2/p269.
+[9] A. Weil, “On some exponential sums,” Proc. Nat. Acad. Sci. U.S.A. 34 (1948), 204–207.
+

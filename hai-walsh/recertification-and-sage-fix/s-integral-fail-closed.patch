@@ -1,0 +1,38 @@
+--- a/src/sage/schemes/elliptic_curves/ell_rational_field.py
++++ b/src/sage/schemes/elliptic_curves/ell_rational_field.py
+@@ -6463,13 +6463,14 @@
+                 c1_LLL = max(tmp, c1_LLL)
+             if c1_LLL < 0:
+                 raise RuntimeError('Unexpected intermediate result. Please try another Mordell-Weil base')
+-            d_L_0 = R(b1_norm**2 / c1_LLL)
++            d_L_0 = min(v.dot_product(v) for v in m_gram.rows())
+ 
+             # Reducing of upper bound
+             Q = r * H_q**2
+             T = (1 + (Z(3)/2*r*H_q))/2
+-            if d_L_0 < R(T**2+Q):
+-                d_L_0 = 10*(T**2*Q)
++            if d_L_0 <= T**2 + Q:
++                raise RuntimeError("unable to establish the S-integral-point "
++                                   "lattice reduction inequality")
+             low_bound = (R(d_L_0 - Q).sqrt() - T) / c
+ 
+             # new bound according to low_bound and upper bound
+@@ -6808,13 +6809,14 @@
+                 c1_LLL = max(tmp, c1_LLL)
+             if c1_LLL < 0:
+                 raise RuntimeError('Unexpected intermediate result. Please try another Mordell-Weil base')
+-            d_L_0 = R(b1_norm**2 / c1_LLL)
++            d_L_0 = min(v.dot_product(v) for v in m_gram.rows())
+ 
+             #Reducing of upper bound
+             Q = r * H_q**2
+             T = (1 + (Z(3)/2*r*H_q))/2
+-            if d_L_0 < R(T**2+Q):
+-                d_L_0 = 10*(T**2*Q)
++            if d_L_0 <= T**2 + Q:
++                raise RuntimeError("unable to establish the S-integral-point "
++                                   "lattice reduction inequality")
+             low_bound = (R(d_L_0 - Q).sqrt() - T) / c
+ 
+             ##new bound according to low_bound and upper bound

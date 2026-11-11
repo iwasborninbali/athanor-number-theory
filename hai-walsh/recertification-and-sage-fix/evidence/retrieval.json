@@ -1,0 +1,70 @@
+[
+  {
+    "name": "issue-10152",
+    "url": "https://api.github.com/repos/sagemath/sage/issues/10152",
+    "final_url": "https://api.github.com/repos/sagemath/sage/issues/10152",
+    "bytes": 6407,
+    "sha256": "66eabe15e71097196efef70b64b7f9ae254a42c1bf1dfe471814e18295afe26c"
+  },
+  {
+    "name": "issue-12095",
+    "url": "https://api.github.com/repos/sagemath/sage/issues/12095",
+    "final_url": "https://api.github.com/repos/sagemath/sage/issues/12095",
+    "bytes": 7016,
+    "sha256": "d4e9b6d3688fe248644083e6a32a53e5bfc1d45cdf25cf2b1fd08191af842f52"
+  },
+  {
+    "name": "issue-10973-comments",
+    "url": "https://api.github.com/repos/sagemath/sage/issues/10973/comments?per_page=100",
+    "final_url": "https://api.github.com/repos/sagemath/sage/issues/10973/comments?per_page=100",
+    "bytes": 213288,
+    "sha256": "cb03028fa8a09766dc0f12cf9e046a56e35fe1d42281889e03f95d2fbb019291"
+  },
+  {
+    "name": "sage-devel-projects",
+    "url": "https://groups.google.com/g/sage-devel/c/dXKF2IQ7Oso",
+    "final_url": "https://groups.google.com/g/sage-devel/c/dXKF2IQ7Oso",
+    "bytes": 1174275,
+    "sha256": "8b2b7b2565157d73e48abf88d55d7f9d3c81f07539e36fc4b20cd776b2351f6a"
+  },
+  {
+    "name": "sage-support-2016",
+    "url": "https://groups.google.com/g/sage-support/c/pHr3prSdVpk",
+    "final_url": "https://groups.google.com/g/sage-support/c/pHr3prSdVpk",
+    "bytes": 1328284,
+    "sha256": "c41ff01e83a56524b7df1c16b93998b4e6542c332b742e506105be93680c1869"
+  },
+  {
+    "name": "lmfdb-2082a1",
+    "url": "https://www.lmfdb.org/EllipticCurve/Q/2082/a/1",
+    "final_url": "https://www.lmfdb.org/EllipticCurve/Q/2082/a/1",
+    "bytes": 142616,
+    "sha256": "5b707688c366d5d8fb527e6248b9cd1ddb146b6aef406c7f392c886032118644"
+  },
+  {
+    "name": "lmfdb-1701d1",
+    "url": "https://www.lmfdb.org/EllipticCurve/Q/1701/d/1",
+    "final_url": "https://www.lmfdb.org/EllipticCurve/Q/1701/d/1",
+    "bytes": 132954,
+    "sha256": "934a7db04907fdc18e311167354c5cd7804ed214a97ca73515ac16a85edc328d"
+  },
+  {
+    "name": "lmfdb-1848f1",
+    "url": "https://www.lmfdb.org/EllipticCurve/Q/1848/f/1",
+    "final_url": "https://www.lmfdb.org/EllipticCurve/Q/1848/f/1",
+    "bytes": 137954,
+    "sha256": "13d6d151b8550100876f21a8e8d9d630ce12678e7bac1e0368d5b98dc1ac1053"
+  },
+  {
+    "name": "cremona-intpts-000000-009999",
+    "url": "https://raw.githubusercontent.com/JohnCremona/ecdata/master/intpts/intpts.000000-009999",
+    "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+    "name": "stroeker-deweger-1999",
+    "url": "https://deweger.net/papers/%5B29%5DStdW-EllCubic-ActaArith%5B1999%5D.pdf",
+    "final_url": "https://deweger.net/papers/%5B29%5DStdW-EllCubic-ActaArith%5B1999%5D.pdf",
+    "bytes": 251118,
+    "sha256": "650510eaed255fd0cdaab9497951f20a6a1408a90cc0e67c922069059e1d9a1c"
+  }
+]

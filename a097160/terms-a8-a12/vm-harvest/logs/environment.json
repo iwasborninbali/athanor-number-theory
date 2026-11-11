@@ -1,0 +1,31 @@
+{
+  "utc": "2026-11-11T01:07:59Z",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": {
+    "system": "Linux",
+    "release": "6.8.0-147-generic",
+    "machine": "x86_64"
+  },
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "compile_flags": "-O3 -march=native -std=c11 -Wall -Wextra",
+  "cpu_count": 4,
+  "active_scanners": [
+    {
+      "pid": 1143339,
+      "argv": [
+        "./scan",
+        "13",
+        "2030313481",
+        "2",
+        "certificates/a12.tsv",
+        "logs/scan-a12.json",
+        "20000000"
+      ],
+      "nice": 10,
+      "affinity": [
+        2
+      ]
+    }
+  ],
+  "cpu_model": "AMD EPYC Processor (with IBPB)"
+}

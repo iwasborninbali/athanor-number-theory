@@ -1,0 +1,268 @@
+SageMath version 10.9, Release Date: 2026-05-04
+{1} 19
+<vm-home>/athanor-vm/stark-83a/sage-env/lib/python3.14/site-packages/sage/schemes/elliptic_curves/period_lattice.py
+['elliptic_e', 'elliptic_e_inc', 'elliptic_f', 'elliptic_invariants', 'elliptic_k', 'elliptic_p', 'elliptic_pi', 'elliptic_pi_inc', 'elliptic_rf', 'elliptic_rg', 'elliptic_rj', 'elliptic_roots', 'elliptic_sigma', 'elliptic_zeta']
+(mw_base='auto', both_signs=False, verbose=False)
+    def elliptic_logarithm(self, P, prec=None, reduce=True):
+        r"""
+        Return the elliptic logarithm of a point.
+
+        INPUT:
+
+        - ``P`` -- point on the elliptic curve associated with this period
+          lattice
+
+        - ``prec`` -- (default: ``None``) real precision in bits
+          (default real precision if ``None``)
+
+        - ``reduce`` -- boolean (default: ``True``); if ``True``, the result
+          is reduced with respect to the period lattice basis
+
+        OUTPUT:
+
+        (complex number) The elliptic logarithm of the point `P` with
+        respect to this period lattice.  If `E` is the elliptic curve
+        and `\sigma:K\to\CC` the embedding, the returned value `z`
+        is such that `z\pmod{L}` maps to `\sigma(P)` under the
+        standard Weierstrass isomorphism from `\CC/L` to `\sigma(E)`.
+        If ``reduce`` is ``True``, the output is reduced so that it is
+        in the fundamental period parallelogram with respect to the
+        normalised lattice basis.
+
+        ALGORITHM:
+
+        Uses the complex AGM.  See [CT2013]_ for details.
+
+        EXAMPLES::
+
+            sage: E = EllipticCurve('389a')
+            sage: L = E.period_lattice()
+            sage: E.discriminant() > 0
+            True
+            sage: L.real_flag
+            1
+            sage: P = E([-1,1])
+            sage: P.is_on_identity_component ()
+            False
+            sage: L.elliptic_logarithm(P, prec=96)
+            0.4793482501902193161295330101 + 0.9858688507758241022112038491*I
+            sage: Q=E([3,5])
+            sage: Q.is_on_identity_component()
+            True
+            sage: L.elliptic_logarithm(Q, prec=96)
+            1.931128271542559442488585220
+
+        Note that this is actually the inverse of the Weierstrass isomorphism::
+
+            sage: L.elliptic_exponential(_)  # abs tol 1e-26
+            (3.000000000000000000000000000 : 5.000000000000000000000000000 : 1.000000000000000000000000000)
+
+        An example with negative discriminant, and a torsion point::
+
+            sage: E = EllipticCurve('11a1')
+            sage: L = E.period_lattice()
+            sage: E.discriminant() < 0
+            True
+            sage: L.real_flag
+            -1
+            sage: P = E([16,-61])
+            sage: L.elliptic_logarithm(P)
+            0.253841860855911
+            sage: L.real_period() / L.elliptic_logarithm(P)
+            5.00000000000000
+
+        An example where precision is problematic::
+
+            sage: E = EllipticCurve([1, 0, 1, -85357462, 303528987048])  #18074g1
+            sage: P = E([4458713781401/835903744, -64466909836503771/24167649046528, 1])
+            sage: L = E.period_lattice()
+            sage: L.ei()
+            [5334.003952567705? - 1.964393150436?e-6*I,
+             5334.003952567705? + 1.964393150436?e-6*I,
+             -10668.25790513541?]
+            sage: L.elliptic_logarithm(P,prec=100)
+            0.27656204014107061464076203097
+
+        Some complex examples, taken from the paper by Cremona and Thongjunthug::
+
+            sage: # needs sage.rings.number_field
+            sage: K.<i> = QuadraticField(-1)
+            sage: a4 = 9*i - 10
+            sage: a6 = 21 - i
+            sage: E = EllipticCurve([0,0,0,a4,a6])
+            sage: e1 = 3 - 2*i; e2 = 1 + i; e3 = -4 + i
+            sage: emb = K.embeddings(CC)[1]
+            sage: L = E.period_lattice(emb)
+            sage: P = E(2 - i, 4 + 2*i)
+
+        By default, the output is reduced with respect to the
+        normalised lattice basis, so that its coordinates with respect
+        to that basis lie in the interval [0,1)::
+
+            sage: z = L.elliptic_logarithm(P, prec=100); z                              # needs sage.rings.number_field
+            0.70448375537782208460499649302 - 0.79246725643650979858266018068*I
+            sage: L.coordinates(z)                                                      # needs sage.rings.number_field
+            (0.46247636364807931766105406092, 0.79497588726808704200760395829)
+
+        Using ``reduce=False`` this step can be omitted.  In this case
+        the coordinates are usually in the interval [-0.5,0.5), but
+        this is not guaranteed.  This option is mainly for testing
+        purposes::
+
+            sage: z = L.elliptic_logarithm(P, prec=100, reduce=False); z                # needs sage.rings.number_field
+            0.57002153834710752778063503023 + 0.46476340520469798857457031393*I
+            sage: L.coordinates(z)                                                      # needs sage.rings.number_field
+            (0.46247636364807931766105406092, -0.20502411273191295799239604171)
+
+        The elliptic logs of the 2-torsion points are half-periods::
+
+            sage: L.elliptic_logarithm(E(e1, 0), prec=100)                              # needs sage.rings.number_field
+            0.64607575874356525952487867052 + 0.22379609053909448304176885364*I
+            sage: L.elliptic_logarithm(E(e2, 0), prec=100)                              # needs sage.rings.number_field
+            0.71330686725892253793705940192 - 0.40481924028150941053684639367*I
+            sage: L.elliptic_logarithm(E(e3, 0), prec=100)                              # needs sage.rings.number_field
+            0.067231108515357278412180731396 - 0.62861533082060389357861524731*I
+
+        We check this by doubling and seeing that the resulting
+        coordinates are integers::
+
+            sage: L.coordinates(2*L.elliptic_logarithm(E(e1, 0), prec=100))             # needs sage.rings.number_field
+            (1.0000000000000000000000000000, 0.00000000000000000000000000000)
+            sage: L.coordinates(2*L.elliptic_logarithm(E(e2, 0), prec=100))             # needs sage.rings.number_field
+            (1.0000000000000000000000000000, 1.0000000000000000000000000000)
+            sage: L.coordinates(2*L.elliptic_logarithm(E(e3, 0), prec=100))             # needs sage.rings.number_field
+            (0.00000000000000000000000000000, 1.0000000000000000000000000000)
+
+        ::
+
+            sage: # needs sage.rings.number_field
+            sage: a4 = -78*i + 104
+            sage: a6 = -216*i - 312
+            sage: E = EllipticCurve([0,0,0,a4,a6])
+            sage: emb = K.embeddings(CC)[1]
+            sage: L = E.period_lattice(emb)
+            sage: P = E(3 + 2*i, 14 - 7*i)
+            sage: L.elliptic_logarithm(P)
+            0.297147783912228 - 0.546125549639461*I
+            sage: L.coordinates(L.elliptic_logarithm(P))
+            (0.628653378040238, 0.371417754610223)
+            sage: e1 = 1 + 3*i; e2 = -4 - 12*i; e3 = -e1 - e2
+            sage: L.coordinates(L.elliptic_logarithm(E(e1, 0)))
+            (0.500000000000000, 0.500000000000000)
+            sage: L.coordinates(L.elliptic_logarithm(E(e2, 0)))
+            (1.00000000000000, 0.500000000000000)
+            sage: L.coordinates(L.elliptic_logarithm(E(e3, 0)))
+            (0.500000000000000, 0.000000000000000)
+
+        TESTS:
+
+        See :issue:`10026` and :issue:`11767`::
+
+            sage: # needs sage.rings.number_field
+            sage: K.<w> = QuadraticField(2)
+            sage: E = EllipticCurve([0, -1, 1, -3*w - 4, 3*w + 4])
+            sage: T = E.simon_two_descent(lim1=20, lim3=5, limtriv=20)
+            sage: P, Q = T[2]
+            sage: embs = K.embeddings(CC)
+            sage: Lambda = E.period_lattice(embs[0])
+            sage: Lambda.elliptic_logarithm(P, 100)
+            4.7100131126199672766973600998
+            sage: R.<x> = QQ[]
+            sage: K.<a> = NumberField(x^2 + x + 5)
+            sage: E = EllipticCurve(K, [0,0,1,-3,-5])
+            sage: P = E([0,a])
+            sage: Lambda = P.curve().period_lattice(K.embeddings(ComplexField(600))[0])
+            sage: Lambda.elliptic_logarithm(P, prec=600)
+            -0.842248166487739393375018008381693990800588864069506187033873183845246233548058477561706400464057832396643843146464236956684557207157300006542470428493573195030603817094900751609464 - 0.571366031453267388121279381354098224265947866751130917440598461117775339240176310729173301979590106474259885638797913383502735083088736326391919063211421189027226502851390118943491*I
+            sage: K.<a> = QuadraticField(-5)
+            sage: E = EllipticCurve([1,1,a,a,0])
+            sage: P = E(0, 0)
+            sage: L = P.curve().period_lattice(K.embeddings(ComplexField())[0])
+            sage: L.elliptic_logarithm(P, prec=500)
+            1.17058357737548897849026170185581196033579563441850967539191867385734983296504066660506637438866628981886518901958717288150400849746892393771983141354 - 1.13513899565966043682474529757126359416758251309237866586896869548539516543734207347695898664875799307727928332953834601460994992792519799260968053875*I
+            sage: L.elliptic_logarithm(P, prec=1000)
+            1.17058357737548897849026170185581196033579563441850967539191867385734983296504066660506637438866628981886518901958717288150400849746892393771983141354014895386251320571643977497740116710952913769943240797618468987304985625823413440999754037939123032233879499904283600304184828809773650066658885672885 - 1.13513899565966043682474529757126359416758251309237866586896869548539516543734207347695898664875799307727928332953834601460994992792519799260968053875387282656993476491590607092182964878750169490985439873220720963653658829712494879003124071110818175013453207439440032582917366703476398880865439217473*I
+
+        Elliptic curve over ``QQbar``::
+
+            sage: E = EllipticCurve(QQbar, [sqrt(2), I])
+            sage: L = E.period_lattice()
+            sage: P = E.lift_x(3)
+            sage: L.elliptic_logarithm(P)
+            -3.47306312187149 + 0.446276755537628*I
+            sage: L.elliptic_exponential(_)  # abs tol 1e-15
+            (3.00000000000000 + 9.63818638531819e-16*I : -5.59022723358799 - 0.0894418024719718*I : 1.00000000000000)
+            sage: L.elliptic_logarithm(P, prec=100)  # abs tol 1e-15
+            -1.9765722109743694676873864341 - 1.0502141553594919125343040138*I
+            sage: L.elliptic_exponential(_)  # abs tol 1e-28
+            (3.0000000000000000000000000000 - 1.4773628579202938936348512161e-30*I : -5.5902272335879800026836302686 - 0.089441802471969391005702381090*I : 1.0000000000000000000000000000)
+
+        Real approximate field, negative discriminant. Note that the output precision uses the precision of the base field::
+
+            sage: E = EllipticCurve(RealField(100), [1, 6])
+            sage: L = E.period_lattice()
+            sage: L.real_flag
+            -1
+            sage: P = E(3, 6)
+            sage: L.elliptic_logarithm(P)  # abs tol 1e-26
+            2.4593388737550379526023682666
+            sage: L.elliptic_exponential(_)  # abs tol 1e-26
+            (3.0000000000000000000000000000 : 5.9999999999999999999999999999 : 1.0000000000000000000000000000)
+            sage: E = EllipticCurve(RDF, [1, 6])
+            sage: L = E.period_lattice()
+            sage: L.real_flag
+            -1
+            sage: P = E(3, 6)
+            sage: L.elliptic_logarithm(P)  # abs tol 1e-13
+            2.45933887375504
+            sage: L.elliptic_exponential(_)  # abs tol 1e-13
+            (3.00000000000000 : 6.00000000000001 : 1.00000000000000)
+
+        Real approximate field, positive discriminant::
+
+            sage: E = EllipticCurve(RealField(100), [-4, 3])
+            sage: L = E.period_lattice()
+            sage: L.real_flag
+            1
+            sage: P = E.lift_x(4)
+            sage: L.elliptic_logarithm(P)  # abs tol 1e-26
+            0.51188849089267627141925354967
+            sage: L.elliptic_exponential(_)  # abs tol 1e-26
+            (4.0000000000000000000000000000 : -7.1414284285428499979993998114 : 1.0000000000000000000000000000)
+
+        Complex approximate field::
+
+            sage: E = EllipticCurve(ComplexField(100), [I, 3*I+4])
+            sage: L = E.period_lattice()
+            sage: L.real_flag
+            0
+            sage: P = E.lift_x(4)
+            sage: L.elliptic_logarithm(P)  # abs tol 1e-26
+            -1.1447032790074574712147458157 - 0.72429843602171875396186134806*I
+            sage: L.elliptic_exponential(_)  # abs tol 1e-26
+            (4.0000000000000000000000000000 + 1.2025589033682610849950210280e-30*I : -8.2570982991257407680322611854 - 0.42387771989714340809597881586*I : 1.0000000000000000000000000000)
+            sage: E = EllipticCurve(CDF, [I, 3*I+4])
+            sage: L = E.period_lattice()
+            sage: L.real_flag
+            0
+            sage: P = E.lift_x(4)
+            sage: L.elliptic_logarithm(P)  # abs tol 1e-13
+            -1.14470327900746 - 0.724298436021719*I
+            sage: L.elliptic_exponential(_)  # abs tol 1e-13
+            (4.00000000000000 - 0*I : -8.25709829912574 - 0.423877719897148*I : 1.00000000000000)
+        """
+        if P.curve() is not self.E:
+            raise ValueError("Point is on the wrong curve")
+        if prec is None:
+            prec = self._compute_default_prec()
+        if P.is_zero():
+            return ComplexField(prec)(0)
+
+        # Compute the real or complex coordinates of P:
+
+        xP, yP = (self.embedding(coord) for coord in P.xy())
+
+        # The real work is done over R or C now:
+
+        return self.e_log_RC(xP, yP, prec, reduce=reduce)
+

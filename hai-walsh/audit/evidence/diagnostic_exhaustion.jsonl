@@ -1,0 +1,7 @@
+{"y": 4, "sign": -1, "bound": 7, "combination_count": 3375, "matches_original": true, "extra": [], "missing": [], "seconds": 0.08372866699937731}
+{"y": 4, "sign": 1, "bound": 3, "combination_count": 7, "matches_original": true, "extra": [], "missing": [], "seconds": 0.00010174995986744761}
+{"y": 25, "sign": -1, "bound": 6, "combination_count": 2197, "matches_original": true, "extra": [], "missing": [], "seconds": 0.0633419580408372}
+{"y": 25, "sign": 1, "bound": 4, "combination_count": 729, "matches_original": true, "extra": [], "missing": [], "seconds": 0.023974041047040373}
+{"y": 93, "sign": -1, "bound": 7, "combination_count": 50625, "matches_original": true, "extra": [], "missing": [], "seconds": 3.7626786659820937}
+{"y": 100, "sign": -1, "bound": 7, "combination_count": 759375, "matches_original": true, "extra": [], "missing": [], "seconds": 110.86185958405258}
+{"y": 100, "sign": 1, "bound": 3, "combination_count": 49, "matches_original": true, "extra": [], "missing": [], "seconds": 0.002528540964704007}

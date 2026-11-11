@@ -1,0 +1,24 @@
+{
+  "accepted_curves": 179,
+  "positive_rank_curves": 144,
+  "rank_zero_curves": 35,
+  "quartic_exclusions": 18,
+  "open_cases": [
+    {
+      "y": 73,
+      "sign": 1
+    },
+    {
+      "y": 91,
+      "sign": 1
+    },
+    {
+      "y": 97,
+      "sign": 1
+    }
+  ],
+  "integral_points": 1161,
+  "coefficient_combinations": 1848523,
+  "solutions": 14,
+  "new_exceptions": 0
+}

@@ -1,0 +1,8 @@
+240 '            d_L_0 = R(b1_norm**2 / c1_LLL)'
+245 '            if d_L_0 < R(T**2+Q):'
+246 '                d_L_0 = 10*(T**2*Q)'
+247 '            low_bound = (R(d_L_0 - Q).sqrt() - T) / c'
+585 '            d_L_0 = R(b1_norm**2 / c1_LLL)'
+590 '            if d_L_0 < R(T**2+Q):'
+591 '                d_L_0 = 10*(T**2*Q)'
+592 '            low_bound = (R(d_L_0 - Q).sqrt() - T) / c'

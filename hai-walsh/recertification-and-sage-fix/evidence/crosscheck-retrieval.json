@@ -1,0 +1,37 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/JohnCremona/ecdata/master/intpts/intpts.00000-09999",
+    "file": "sources/cremona-intpts.00000-09999",
+    "sha256": "6ae390689c80df6784bd31ffc418d6ddf8a173db8db91764527782d955b0120f"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/JohnCremona/ecdata/master/intpts/intpts.170000-179999",
+    "file": "sources/cremona-intpts.170000-179999",
+    "sha256": "d6c1936d68468b52b4f66b65a40365ad4c43a82da8df16cce7d519f3975d4385"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/JohnCremona/ecdata/master/intpts/intpts.20000-29999",
+    "file": "sources/cremona-intpts.20000-29999",
+    "sha256": "3c1cf7a5aa21a34ac73f18dbe4ee15bf224101d13e731458aa49632743c58fd2"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/JohnCremona/ecdata/master/intpts/intpts.260000-269999",
+    "file": "sources/cremona-intpts.260000-269999",
+    "sha256": "3b16dde210dac959d6b591056eeb486207766c569db5d1dccec6cf1ed8faffbf"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/JohnCremona/ecdata/master/intpts/intpts.280000-289999",
+    "file": "sources/cremona-intpts.280000-289999",
+    "sha256": "151f3672a586b82b2b78df2a721c0046583499778c075594c49172f4799d1f48"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/JohnCremona/ecdata/master/intpts/intpts.60000-69999",
+    "file": "sources/cremona-intpts.60000-69999",
+    "sha256": "f99474077b32a19292cd91d80076c03bd56818d888cdcffe05b7024e1266aced"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/JohnCremona/ecdata/master/intpts/intpts.90000-99999",
+    "file": "sources/cremona-intpts.90000-99999",
+    "sha256": "39812091a2aef611904b79b825e6db351b0735f1f1cf6cab18c975205a7dc13b"
+  }
+]
