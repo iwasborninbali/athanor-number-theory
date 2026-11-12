@@ -13,8 +13,8 @@ Certified computations on long-stalled number-theory questions (November 2026). 
 
 - **Method.** Weil's character-sum bound gives an explicit cutoff above which every prime has a run of n+1 residues. Below the cutoff a complete scan **determines** a(n), it does not only check a candidate.
 - **a(7):** the proof is independently audited (`a097160/a7-audit/`). Buell and Hudson (BIT 24, 1984) very likely covered a(7) and a(8) already; their tables were not accessible to us.
-- **a(8)–a(11):** each was reproduced by a separately written full rescan (the `guide_check_*` programs in `terms-a8-a12/`), and a(10) also by a third program.
-- **a(12):** one full scan, plus an independent check of every exceptional prime and a random sample. A second full rescan is running.
+- **a(8)–a(12):** each was reproduced by a separately written full rescan (the `guide_check_*` programs in `terms-a8-a12/`), and a(10) also by a third program.
+- **a(12):** the second full rescan (`guide_check_qrrun2.c`, 2 shards, all primes below 2,030,313,481) finished on 12 Nov 2026. Its list of 2,760 exceptional primes, with their longest runs, is identical to the primary certificate `certificates/a12.tsv`, and gives a(12) = 324673 (`terms-a8-a12/logs/guide-check-a12.json`).
 - **Old OEIS values:** revisions once listed a(9) = 17041 and a(10) = 23473. Both were removed as incorrect, and these scans confirm they were wrong.
 
 ### Hai–Walsh, and a defect found in SageMath

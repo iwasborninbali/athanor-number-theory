@@ -1,0 +1,18 @@
+{
+  "check": "Guide's independent full rescan of a(12)",
+  "program": "guide_check_qrrun2.c",
+  "k": 13,
+  "N": 2030313481,
+  "shards": 2,
+  "primes_per_shard": [
+    49818901,
+    49818900
+  ],
+  "host": "personal VPS, cores 2-3, nice 10",
+  "started": "2026-11-11 ~15:05 WITA",
+  "finished": "2026-11-12 21:17 WITA",
+  "exceptional_primes": 2760,
+  "a12": 324673,
+  "exception_list_sha256_prime_run_sorted": "c199dcb01cd7e8d4f2f8f87383bab355094bca64e61505ef2962d2db7ab10800",
+  "matches_primary_certificate": "certificates/a12.tsv, columns (prime, longest_run), all 2760 rows identical"
+}
