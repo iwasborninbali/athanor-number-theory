@@ -11,6 +11,8 @@ Certified computations on long-stalled number-theory questions (November 2026). 
 
 ### A097160
 
+- **Own repository:** this sequence now has its own repository, [oeis-A097160](https://github.com/iwasborninbali/oeis-A097160), which the OEIS entry links. The `a097160/` folder here is kept as archived in the Zenodo releases.
+
 - **Method.** Weil's character-sum bound gives an explicit cutoff above which every prime has a run of n+1 residues. Below the cutoff a complete scan **determines** a(n), it does not only check a candidate.
 - **a(7):** the proof is independently audited (`a097160/a7-audit/`). Buell and Hudson (BIT 24, 1984) very likely covered a(7) and a(8) already; their tables were not accessible to us.
 - **a(8)–a(12):** each was reproduced by a separately written full rescan (the `guide_check_*` programs in `terms-a8-a12/`), and a(10) also by a third program.
